@@ -1,10 +1,7 @@
 import {Grid} from "@hilla/react-components/Grid";
 import {GridSortColumn} from "@hilla/react-components/GridSortColumn";
 import React, {useEffect, useState} from "react";
-import {GridColumn} from "@hilla/react-components/GridColumn.js";
-import {Icon} from "@hilla/react-components/Icon";
 import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
 import {FormLayout} from "@hilla/react-components/FormLayout";
 import {TextField} from "@hilla/react-components/TextField";
 import {Notification} from "@hilla/react-components/Notification";

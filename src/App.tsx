@@ -1,6 +1,6 @@
 import React from 'react';
-import UsersView from "./views/users-view";
-import Login from "./views/login-view";
+import UsersView from "./views/UsersView";
+import Login from "./views/LoginView";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import './App.css';
 import {DrawerToggle} from "@hilla/react-components/DrawerToggle";
@@ -8,7 +8,7 @@ import {Tabs} from "@hilla/react-components/Tabs";
 import {Tab} from "@hilla/react-components/Tab";
 import {Icon} from "@hilla/react-components/Icon";
 import {AppLayout} from "@hilla/react-components/AppLayout";
-import Dashboard from "./views/dashboard-view";
+import Dashboard from "./views/DashboardView";
 
 const h1Style = {
     fontSize: 'var(--lumo-font-size-l)',

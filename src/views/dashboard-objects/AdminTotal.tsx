@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import GetAPI from "./getAPI";
+import GetAPI from "./GetAPI";
 export default function AdminTotal() {
 
     const [totalAdmins, setuserTotal] = useState<number>(0);

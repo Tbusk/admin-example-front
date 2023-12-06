@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { FormLayout } from '@hilla/react-components/FormLayout';
 import { TextField } from '@hilla/react-components/TextField';
-import { PasswordField } from '@hilla/react-components/PasswordField';
 import { Button } from 'primereact/button';
 import {VerticalLayout} from "@hilla/react-components/VerticalLayout";
 import {Notification} from "@hilla/react-components/Notification";

@@ -1,10 +1,10 @@
-import UsersTotal from "./dashboard-objects/users-total";
-import AdminTotal from "./dashboard-objects/admin-total";
-import NewUsersMonthlyTotal from "./dashboard-objects/new-users-monthly-total";
-import NewUsersTriMonthlyTotal from "./dashboard-objects/new-users-trimonthly-total";
-import NewUsersYearlyTotal from "./dashboard-objects/new-users-yearly-total";
+import UsersTotal from "./dashboard-objects/UsersTotal";
+import AdminTotal from "./dashboard-objects/AdminTotal";
+import NewUsersMonthlyTotal from "./dashboard-objects/NewUsersMonthlyTotal";
+import NewUsersTriMonthlyTotal from "./dashboard-objects/NewUsersTriMonthlyTotal";
+import NewUsersYearlyTotal from "./dashboard-objects/NewUsersYearlyTotal";
 import React from "react";
-import DashboardCard from "./dashboard-objects/dashboard-card";
+import DashboardCard from "./dashboard-objects/DashboardCard";
 
 export default function Dashboard() {
     return (

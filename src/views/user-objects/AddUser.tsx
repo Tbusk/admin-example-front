@@ -7,7 +7,7 @@ import {VerticalLayout} from "@hilla/react-components/VerticalLayout";
 import {Notification} from "@hilla/react-components/Notification";
 
 function addingNotification() {
-    const notification = Notification.show('Added user info. Refreshing content ...', {
+    const notification = Notification.show('Added user. Refreshing content ...', {
         position: 'top-center',
         duration: 4000,
         theme: 'contrast',
@@ -15,7 +15,7 @@ function addingNotification() {
     return <></>;
 }
 
-export default function AddUserInfo() {
+export default function AddUser() {
 
     const responsiveSteps = [
         { minWidth: '0', columns: 1 },
@@ -25,11 +25,11 @@ export default function AddUserInfo() {
 
     async function getAndSendFormData() {
         const formData = new FormData();
-        formData.append('emailAddress',(document.getElementById('emailAddress') as HTMLInputElement).value);
-        formData.append('firstName',(document.getElementById('firstName') as HTMLInputElement).value);
-        formData.append('lastName',(document.getElementById('lastName') as HTMLInputElement).value);
-        formData.append('dateOfBirth',(document.getElementById('dateOfBirth') as HTMLInputElement).value);
-        formData.append('phoneNumber',(document.getElementById('phoneNumber') as HTMLInputElement).value);
+        formData.append('userInfoID',(document.getElementById('userInfoID') as HTMLInputElement).value);
+        formData.append('addressID',(document.getElementById('addressID') as HTMLInputElement).value);
+        formData.append('username',(document.getElementById('username') as HTMLInputElement).value);
+        formData.append('password',(document.getElementById('password') as HTMLInputElement).value);
+        formData.append('role',(document.getElementById('role') as HTMLInputElement).value);
 
         const jsonObject: { [key: string]: any } = {};
         for (const [key, value] of formData.entries()) {
@@ -38,7 +38,7 @@ export default function AddUserInfo() {
 
         const jsonString = JSON.stringify(jsonObject);
 
-        await fetch('http://localhost:8080/api/userinfo', {
+        await fetch('http://localhost:8080/api/user', {
             method: 'POST',
             body: jsonString,
             headers: {
@@ -57,25 +57,26 @@ export default function AddUserInfo() {
         <div className="container-lg p-4 pb-2 pt-3">
             <div className="container" >
                 <div className="container justify-content-center align-items-center text-center">
-                    <h3>Add User Info</h3>
+                    <h3>Create User</h3>
                     <hr/>
                 </div>
                 <div className="card-body">
-                <VerticalLayout theme="spacing">
-                    <FormLayout responsiveSteps={responsiveSteps}>
-                        <TextField label="Email" id="emailAddress"/>
-                        <TextField label="First Name" id="firstName"/>
-                        <TextField label="Last Name" id="lastName"/>
-                        <TextField label="Date Of Birth" id="dateOfBirth"/>
-                        <TextField label="Phone Number" id="phoneNumber"/>
-                    </FormLayout>
+                        <VerticalLayout theme="spacing">
+                            <FormLayout responsiveSteps={responsiveSteps}>
+                                <TextField label="UserInfoID" id="userInfoID"/>
+                                <TextField label="AddressID" id="addressID"/>
+                                <TextField label="Username" id="username"/>
+                                <PasswordField label="Password" id="password"/>
+                                <PasswordField label="Confirm password" />
+                                <TextField label="Role" id="role"/>
+                            </FormLayout>
 
-                    <div className="container d-flex align-items-center justify-content-center">
+                            <div className="container d-flex align-items-center justify-content-center">
 
-                        <Button label="Create UserInfo" className="btn btn-primary" size="large" type="submit" onClick={getAndSendFormData}/>
+                                <Button label="Create User" className="btn btn-primary" size="large" type="submit" onClick={getAndSendFormData}/>
 
-                    </div>
-                </VerticalLayout>
+                            </div>
+                        </VerticalLayout>
                 </div>
             </div>
         </div>

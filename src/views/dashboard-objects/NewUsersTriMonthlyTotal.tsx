@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import GetAPI from "./getAPI";
+import GetAPI from "./GetAPI";
 
-export default function NewUsersMonthlyTotal() {
+export default function NewUsersTriMonthlyTotal() {
 
     const [totalUsers, setUserTotal] = useState<number>(0);
     useEffect(() => {
-        GetAPI({ apiURL: "http://localhost:8080/api/dashboard/new-users/pastmonth/count"} ).then((data:number) => {
+        GetAPI({ apiURL: "http://localhost:8080/api/dashboard/new-users/trimonthly/count"} ).then((data:number) => {
             setUserTotal(data);
         });
     }, []);

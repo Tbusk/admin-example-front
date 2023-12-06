@@ -16,7 +16,7 @@ export const routes = [
             {
                 path: '',
                 component: 'user-view',
-                action: async () => { await import ('./views/users-view'); }
+                action: async () => { await import ('./views/UsersView'); }
             }
         ]
     },
@@ -30,7 +30,7 @@ export const views: ViewRoute[] = [
         icon: 'file',
         title: 'Users',
         action: async (_context, _command) => {
-            await import('./views/users-view');
+            await import('./views/UsersView');
             return;
         },
     },
