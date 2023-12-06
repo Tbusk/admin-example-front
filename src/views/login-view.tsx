@@ -51,18 +51,6 @@ export default function Login() {
                         <div className="form-outline mb-4 p-2">
                             <input type="password" id="password" name="password" className="form-control" placeholder="Password"/>
                         </div>
-                        <div className="row mb-4">
-                            <div className="col d-flex justify-content-center">
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                                    <label className="form-check-label" htmlFor="form2Example31"> Remember me </label>
-                                </div>
-                            </div>
-
-                            <div className="col">
-                                <a href="#!">Forgot password?</a>
-                            </div>
-                        </div>
                         <div className="d-flex align-items-center justify-content-center">
                             <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
                         </div>
