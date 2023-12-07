@@ -2,7 +2,7 @@ import React from 'react';
 import { Notification } from '@hilla/react-components/Notification.js';
 
 function loginNotification() {
-    const notification = Notification.show('Successfully Logged In.  Your token will expire in 8hrs. Redirecting ...', {
+    const notification = Notification.show('Successfully Logged In.  Your authentication token will expire in 8hrs. Redirecting ...', {
         position: 'top-center',
         duration: 4000,
         theme: 'contrast',
@@ -12,7 +12,7 @@ function loginNotification() {
 
 export default function Login() {
 
-    const getJwtToken = async (event: React.FormEvent<HTMLFormElement>) => {
+    const fetchJwtToken = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const data = {
@@ -42,7 +42,7 @@ export default function Login() {
                     <h3 className="card-title text-center pt-5 pb-4">
                         Login
                     </h3>
-                    <form onSubmit={getJwtToken} method="post">
+                    <form onSubmit={fetchJwtToken} method="post">
                         <div className="form-outline mb-4 p-2" >
                             <input type="text" name="username" id="username" className="form-control" placeholder="Username"/>
 

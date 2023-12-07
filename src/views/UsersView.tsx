@@ -19,7 +19,6 @@ export default function UsersView() {
                 <Tab id="users-info-table">Users Info</Tab>
                 <Tab id="address-table">Addresses</Tab>
             </Tabs>
-
             <div {...{ tab: 'users-table'}}>
                 <UserTable/>
                 <AddUser/>

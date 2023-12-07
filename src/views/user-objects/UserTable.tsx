@@ -10,7 +10,7 @@ import {Notification} from "@hilla/react-components/Notification";
 
 export default function UserTable() {
 
-    function addingNotification() {
+    function updatingNotification() {
         const notification = Notification.show('Updating user. Refreshing content ...', {
             position: 'top-center',
             duration: 2000,
@@ -79,7 +79,7 @@ export default function UserTable() {
             }
         }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
 
-        addingNotification();
+        updatingNotification();
         setTimeout(() => {
             window.location.reload();
         }, 2000);
@@ -98,6 +98,7 @@ export default function UserTable() {
                   multiSort multiSortPriority="append"
                   columnRendering="lazy"
                   detailsOpenedItems={detailsOpenedItem}
+                  style={{height: '500px'}}
                   rowDetailsRenderer={({ item: user}) => (
                       <FormLayout responsiveSteps={[{ minWidth: '0', columns: 3}]} className="m-0">
                           <TextField label="UserID" value={user.userID.toString()} {...{ colspan: 3}} id={"userID"} hidden={true}></TextField>

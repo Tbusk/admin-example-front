@@ -8,7 +8,7 @@ import {Button} from "primereact/button";
 
 export default function UserInfo() {
 
-    function addingNotification() {
+    function updatingNotification() {
         const notification = Notification.show('Updating user info. Refreshing content ...', {
             position: 'top-center',
             duration: 2000,
@@ -76,7 +76,7 @@ export default function UserInfo() {
             }
         }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
 
-        addingNotification();
+        updatingNotification();
         setTimeout(() => {
             window.location.reload();
         }, 2000);
@@ -90,6 +90,7 @@ export default function UserInfo() {
                   const userinfo = e.detail.value;
                   setDetailsOpenedItem(userinfo ? [userinfo] : []);
               }}  multiSort multiSortPriority="append"
+              style={{height: '500px'}}
               columnRendering="lazy"
               detailsOpenedItems={detailsOpenedItem}
               rowDetailsRenderer={({ item: userinfo}) => (

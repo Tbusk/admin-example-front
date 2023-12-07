@@ -7,7 +7,7 @@ import {TextField} from "@hilla/react-components/TextField";
 
 export default function AddressTable() {
 
-    function addingNotification() {
+    function updatingNotification() {
         const notification = Notification.show('Updating address. Refreshing content ...', {
             position: 'top-center',
             duration: 2000,
@@ -87,7 +87,7 @@ export default function AddressTable() {
             }
         }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
 
-        addingNotification();
+        updatingNotification();
         setTimeout(() => {
             window.location.reload();
         }, 2000);
@@ -129,6 +129,7 @@ export default function AddressTable() {
                   setDetailsOpenedItem(address ? [address] : []);
               }} multiSort multiSortPriority="append"
               columnRendering="lazy"
+              style={{height: '500px'}}
               detailsOpenedItems={detailsOpenedItem}
               rowDetailsRenderer={({ item: address}) => (
                   <FormLayout responsiveSteps={[{ minWidth: '0', columns: 3}]}>

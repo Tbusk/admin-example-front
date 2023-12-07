@@ -21,6 +21,7 @@
     "@vaadin/icons": "^24.2.5",
     "@vaadin/vaadin": "^24.1.15",
     "bootstrap": "^5.3.2",
+    "date-fns": "^2.30.0",
     "lit": "^3.1.0",
     "primereact": "^10.2.1",
     "react": "^18.2.0",

@@ -9,6 +9,7 @@ import {Tab} from "@hilla/react-components/Tab";
 import {Icon} from "@hilla/react-components/Icon";
 import {AppLayout} from "@hilla/react-components/AppLayout";
 import Dashboard from "./views/DashboardView";
+import '@vaadin/icons';
 
 const h1Style = {
     fontSize: 'var(--lumo-font-size-l)',

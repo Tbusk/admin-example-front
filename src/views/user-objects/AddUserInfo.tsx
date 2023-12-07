@@ -1,8 +1,6 @@
 import React from 'react';
 import { FormLayout } from '@hilla/react-components/FormLayout';
 import { TextField } from '@hilla/react-components/TextField';
-import { Button } from 'primereact/button';
-import {VerticalLayout} from "@hilla/react-components/VerticalLayout";
 import {Notification} from "@hilla/react-components/Notification";
 
 function addingNotification() {
@@ -53,30 +51,33 @@ export default function AddUserInfo() {
     }
 
     return (
-        <div className="container-lg p-4 pb-2 pt-3">
-            <div className="container" >
-                <div className="container justify-content-center align-items-center text-center">
-                    <h3>Add User Info</h3>
-                    <hr/>
-                </div>
-                <div className="card-body">
-                <VerticalLayout theme="spacing">
-                    <FormLayout responsiveSteps={responsiveSteps}>
-                        <TextField label="Email" id="emailAddress"/>
-                        <TextField label="First Name" id="firstName"/>
-                        <TextField label="Last Name" id="lastName"/>
-                        <TextField label="Date Of Birth" id="dateOfBirth"/>
-                        <TextField label="Phone Number" id="phoneNumber"/>
-                    </FormLayout>
-
-                    <div className="container d-flex align-items-center justify-content-center">
-
-                        <Button label="Create UserInfo" className="btn btn-primary" size="large" type="submit" onClick={getAndSendFormData}/>
-
+        <div className="d-flex align-items-center justify-content-center p-4">
+            <div className="modal fade" id="userinfo-modal">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Add User Info</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <FormLayout responsiveSteps={responsiveSteps}>
+                                <TextField label="Email" id="emailAddress"/>
+                                <TextField label="First Name" id="firstName"/>
+                                <TextField label="Last Name" id="lastName"/>
+                                <TextField label="Date Of Birth" id="dateOfBirth" typeof="date"/>
+                                <TextField label="Phone Number" id="phoneNumber"  allowedCharPattern="[0-9()+-]"/>
+                            </FormLayout>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-primary" onClick={getAndSendFormData} data-bs-dismiss="modal">Add User</button>
+                        </div>
                     </div>
-                </VerticalLayout>
                 </div>
             </div>
+            <button type="button" className="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#userinfo-modal">
+                Add User Info
+            </button>
         </div>
     );
 }
