@@ -28,16 +28,16 @@ const iconStyle: React.CSSProperties = {
 
 export default function App() {
 
-  return (
-          <Routes>
-              <Route path="/" element={<Layout />}>
-                  <Route index element={<Dashboard />} />
-                  <Route path="Users" element={<UsersView />} />
-                  <Route path="Login" element={<Login />} />
+    return (
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="Users" element={<UsersView />} />
+                <Route path="Login" element={<Login />} />
 
-              </Route>
-          </Routes>
-  );
+            </Route>
+        </Routes>
+    );
 }
 
 function Layout() {

@@ -100,46 +100,46 @@ export default function UserInfo() {
     return (
         <div className="container-lg p-4 pt-0 pb-3">
             <h3 className="text-center pt-3 pb-3">Users Info Table</h3>
-        <Grid items={usersInfo}  selectedItems={selectedItems}
-              onActiveItemChanged={(e) => {
-                  const userinfo = e.detail.value;
-                  setDetailsOpenedItem(userinfo ? [userinfo] : []);
-              }}  multiSort multiSortPriority="append"
-              style={{height: '500px'}}
-              columnRendering="lazy"
-              detailsOpenedItems={detailsOpenedItem}
-              rowDetailsRenderer={({ item: userinfo}) => (
-                  <FormLayout responsiveSteps={[{ minWidth: '0', columns: 3}]}>
+            <Grid items={usersInfo}  selectedItems={selectedItems}
+                  onActiveItemChanged={(e) => {
+                      const userinfo = e.detail.value;
+                      setDetailsOpenedItem(userinfo ? [userinfo] : []);
+                  }}  multiSort multiSortPriority="append"
+                  style={{height: '500px'}}
+                  columnRendering="lazy"
+                  detailsOpenedItems={detailsOpenedItem}
+                  rowDetailsRenderer={({ item: userinfo}) => (
+                      <FormLayout responsiveSteps={[{ minWidth: '0', columns: 3}]}>
 
-                      <TextField label="UserInfoID" value={userinfo.userInfoID.toString()} {...{ colspan: 3}} id={"userInfoID"} hidden={true}></TextField>
+                          <TextField label="UserInfoID" value={userinfo.userInfoID.toString()} {...{ colspan: 3}} id={"userInfoID"} hidden={true}></TextField>
 
-                      <label htmlFor={"emailAddress" + userinfo.userInfoID} >Email Address</label>
-                      <TextField value={userinfo.emailAddress} {...{ colspan: 3}} id={"emailAddress" + userinfo.userInfoID} contentEditable={true}></TextField>
+                          <label htmlFor={"emailAddress" + userinfo.userInfoID} >Email Address</label>
+                          <TextField value={userinfo.emailAddress} {...{ colspan: 3}} id={"emailAddress" + userinfo.userInfoID} contentEditable={true}></TextField>
 
-                      <label htmlFor={"firstName" + userinfo.userInfoID} >First Name</label>
-                      <TextField  value={userinfo.firstName} {...{ colspan: 3}} id={"firstName" + userinfo.userInfoID} contentEditable={true}></TextField>
+                          <label htmlFor={"firstName" + userinfo.userInfoID} >First Name</label>
+                          <TextField  value={userinfo.firstName} {...{ colspan: 3}} id={"firstName" + userinfo.userInfoID} contentEditable={true}></TextField>
 
-                      <label htmlFor={"lastName" + userinfo.userInfoID} >Last Name</label>
-                      <TextField  value={userinfo.lastName} {...{ colspan: 3}} id={"lastName" + userinfo.userInfoID} contentEditable={true}></TextField>
+                          <label htmlFor={"lastName" + userinfo.userInfoID} >Last Name</label>
+                          <TextField  value={userinfo.lastName} {...{ colspan: 3}} id={"lastName" + userinfo.userInfoID} contentEditable={true}></TextField>
 
-                      <label htmlFor={userinfo.dateOfBirth.toString()} >Date of Birth</label>
-                      <TextField  value={userinfo.dateOfBirth.toString()} {...{ colspan: 3}} id={"dateOfBirth" + userinfo.userInfoID} contentEditable={true}></TextField>
+                          <label htmlFor={userinfo.dateOfBirth.toString()} >Date of Birth</label>
+                          <TextField  value={userinfo.dateOfBirth.toString()} {...{ colspan: 3}} id={"dateOfBirth" + userinfo.userInfoID} contentEditable={true}></TextField>
 
-                      <label htmlFor={"phoneNumber" + userinfo.userInfoID} >Phone Number</label>
-                      <TextField value={userinfo.phoneNumber} id={"phoneNumber" + userinfo.userInfoID} {...{ colspan: 3}} contentEditable={true}></TextField>
-                      <div className="pt-3 pb-3">
-                          <Button className="btn btn-primary" type="button" onClick={() => getAndSendFormData(userinfo.userInfoID)}>Submit</Button>
-                      </div>
+                          <label htmlFor={"phoneNumber" + userinfo.userInfoID} >Phone Number</label>
+                          <TextField value={userinfo.phoneNumber} id={"phoneNumber" + userinfo.userInfoID} {...{ colspan: 3}} contentEditable={true}></TextField>
+                          <div className="pt-3 pb-3">
+                              <Button className="btn btn-primary" type="button" onClick={() => getAndSendFormData(userinfo.userInfoID)}>Submit</Button>
+                          </div>
 
-                  </FormLayout>
-              )}>
-            <GridSortColumn header="UserInfoID" path="userInfoID" autoWidth resizable/>
-            <GridSortColumn header="Email Address" path="emailAddress" autoWidth resizable/>
-            <GridSortColumn header="First Name" path="firstName" autoWidth resizable/>
-            <GridSortColumn header="Last Name" path="lastName" autoWidth resizable/>
-            <GridSortColumn header="Date Of Birth" path="dateOfBirth" autoWidth resizable/>
-            <GridSortColumn header="Phone Number" path="phoneNumber" autoWidth resizable/>
-        </Grid>
+                      </FormLayout>
+                  )}>
+                <GridSortColumn header="UserInfoID" path="userInfoID" autoWidth resizable/>
+                <GridSortColumn header="Email Address" path="emailAddress" autoWidth resizable/>
+                <GridSortColumn header="First Name" path="firstName" autoWidth resizable/>
+                <GridSortColumn header="Last Name" path="lastName" autoWidth resizable/>
+                <GridSortColumn header="Date Of Birth" path="dateOfBirth" autoWidth resizable/>
+                <GridSortColumn header="Phone Number" path="phoneNumber" autoWidth resizable/>
+            </Grid>
         </div>
     );
 }

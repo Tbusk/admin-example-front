@@ -142,54 +142,54 @@ export default function AddressTable() {
     return (
         <div className="container-lg p-4 pt-0 pb-3">
             <h3 className="text-center pt-3 pb-3">Address Table</h3>
-        <Grid items={address}  selectedItems={selectedItems}
-              onActiveItemChanged={(e) => {
-                  const address = e.detail.value;
-                  setDetailsOpenedItem(address ? [address] : []);
-              }} multiSort multiSortPriority="append"
-              columnRendering="lazy"
-              style={{height: '500px'}}
-              detailsOpenedItems={detailsOpenedItem}
-              rowDetailsRenderer={({ item: address}) => (
-                  <FormLayout responsiveSteps={[{ minWidth: '0', columns: 3}]}>
-                      <TextField label="addressID" value={address.addressID.toString()} {...{ colspan: 3}} id={"addressID"} hidden={true}></TextField>
+            <Grid items={address}  selectedItems={selectedItems}
+                  onActiveItemChanged={(e) => {
+                      const address = e.detail.value;
+                      setDetailsOpenedItem(address ? [address] : []);
+                  }} multiSort multiSortPriority="append"
+                  columnRendering="lazy"
+                  style={{height: '500px'}}
+                  detailsOpenedItems={detailsOpenedItem}
+                  rowDetailsRenderer={({ item: address}) => (
+                      <FormLayout responsiveSteps={[{ minWidth: '0', columns: 3}]}>
+                          <TextField label="addressID" value={address.addressID.toString()} {...{ colspan: 3}} id={"addressID"} hidden={true}></TextField>
 
-                      <label htmlFor={"addressOne" + address.addressID} >Address One</label>
-                      <TextField value={address.addressOne} {...{ colspan: 3}} id={"addressOne" + address.addressID} contentEditable={true}></TextField>
+                          <label htmlFor={"addressOne" + address.addressID} >Address One</label>
+                          <TextField value={address.addressOne} {...{ colspan: 3}} id={"addressOne" + address.addressID} contentEditable={true}></TextField>
 
-                      <label htmlFor={"addressTwo" + address.addressID} >Address Two</label>
-                      <TextField value={address.addressTwo} {...{ colspan: 3}} id={"addressTwo" + address.addressID} contentEditable={true}></TextField>
+                          <label htmlFor={"addressTwo" + address.addressID} >Address Two</label>
+                          <TextField value={address.addressTwo} {...{ colspan: 3}} id={"addressTwo" + address.addressID} contentEditable={true}></TextField>
 
-                      <label htmlFor={"city" + address.addressID} >City</label>
-                      <TextField value={address.city} {...{ colspan: 3}} id={"city" + address.addressID} contentEditable={true}></TextField>
+                          <label htmlFor={"city" + address.addressID} >City</label>
+                          <TextField value={address.city} {...{ colspan: 3}} id={"city" + address.addressID} contentEditable={true}></TextField>
 
-                      <label htmlFor={"state" + address.addressID} >State</label>
-                      <TextField value={address.state} {...{ colspan: 3}} id={"state" + address.addressID} contentEditable={true}></TextField>
+                          <label htmlFor={"state" + address.addressID} >State</label>
+                          <TextField value={address.state} {...{ colspan: 3}} id={"state" + address.addressID} contentEditable={true}></TextField>
 
-                      <label htmlFor={"country" + address.addressID} >Country</label>
-                      <TextField value={address.country} id={"country" + address.addressID} {...{ colspan: 3}} contentEditable={true}></TextField>
+                          <label htmlFor={"country" + address.addressID} >Country</label>
+                          <TextField value={address.country} id={"country" + address.addressID} {...{ colspan: 3}} contentEditable={true}></TextField>
 
-                      <label htmlFor={"zip" + address.addressID} >Zip</label>
-                      <TextField value={address.zip.toString()} id={"zip" + address.addressID} {...{ colspan: 3}} contentEditable={true}></TextField>
+                          <label htmlFor={"zip" + address.addressID} >Zip</label>
+                          <TextField value={address.zip.toString()} id={"zip" + address.addressID} {...{ colspan: 3}} contentEditable={true}></TextField>
 
-                        <div className="container-fluid d-flex m-0 p-0">
-                          <div className="btn-group align-items-center justify-content-center" role="group">
-                              <button type="button" className="btn btn-primary" onClick={() => getAndSendFormData(address.addressID)}>Submit</button>
-                              <button type="button" className="btn btn-primary" onClick={() => deleteAddress(address.addressID)}>Delete</button>
+                          <div className="container-fluid d-flex m-0 p-0">
+                              <div className="btn-group align-items-center justify-content-center" role="group">
+                                  <button type="button" className="btn btn-primary" onClick={() => getAndSendFormData(address.addressID)}>Submit</button>
+                                  <button type="button" className="btn btn-primary" onClick={() => deleteAddress(address.addressID)}>Delete</button>
+                              </div>
                           </div>
-                        </div>
 
 
-                  </FormLayout>
-              )}>
-            <GridSortColumn header="AddressID" path="addressID"  autoWidth resizable/>
-            <GridSortColumn header="Address One" path="addressOne" autoWidth resizable/>
-            <GridSortColumn header="Address Two" path="addressTwo" autoWidth resizable/>
-            <GridSortColumn path="city" autoWidth resizable/>
-            <GridSortColumn path="state" autoWidth resizable/>
-            <GridSortColumn path="country" autoWidth resizable/>
-            <GridSortColumn path="zip" autoWidth resizable/>
-        </Grid>
+                      </FormLayout>
+                  )}>
+                <GridSortColumn header="AddressID" path="addressID"  autoWidth resizable/>
+                <GridSortColumn header="Address One" path="addressOne" autoWidth resizable/>
+                <GridSortColumn header="Address Two" path="addressTwo" autoWidth resizable/>
+                <GridSortColumn path="city" autoWidth resizable/>
+                <GridSortColumn path="state" autoWidth resizable/>
+                <GridSortColumn path="country" autoWidth resizable/>
+                <GridSortColumn path="zip" autoWidth resizable/>
+            </Grid>
         </div>
     );
 }

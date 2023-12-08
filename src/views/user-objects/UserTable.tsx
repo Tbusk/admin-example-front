@@ -134,9 +134,7 @@ export default function UserTable() {
                           </div>
 
                       </FormLayout>
-                  )}
-
-            >
+                  )}>
 
                 <GridSortColumn  header="UserID" path="userID" autoWidth resizable/>
                 <GridSortColumn  header="UserInfoID" path="userInfoID" autoWidth resizable/>
