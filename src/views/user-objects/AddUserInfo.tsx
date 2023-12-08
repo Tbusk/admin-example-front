@@ -14,12 +14,6 @@ function addingNotification() {
 
 export default function AddUserInfo() {
 
-    const responsiveSteps = [
-        { minWidth: '0', columns: 1 },
-        { minWidth: '500px', columns: 2 },
-        { minWidth: '750px', columns: 3 },
-    ];
-
     async function getAndSendFormData() {
         const formData = new FormData();
         formData.append('emailAddress',(document.getElementById('emailAddress') as HTMLInputElement).value);
@@ -60,7 +54,7 @@ export default function AddUserInfo() {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <FormLayout responsiveSteps={responsiveSteps}>
+                            <FormLayout>
                                 <TextField label="Email" id="emailAddress"/>
                                 <TextField label="First Name" id="firstName"/>
                                 <TextField label="Last Name" id="lastName"/>

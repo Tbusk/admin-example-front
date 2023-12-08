@@ -14,12 +14,6 @@ function addingNotification() {
 
 export default function AddAddress() {
 
-    const responsiveSteps = [
-        { minWidth: '0', columns: 1 },
-        { minWidth: '500px', columns: 2 },
-        { minWidth: '750px', columns: 3 },
-    ];
-
     async function getAndSendFormData() {
         const formData = new FormData();
         formData.append('addressOne',(document.getElementById('addressOne') as HTMLInputElement).value);
@@ -60,7 +54,7 @@ export default function AddAddress() {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <FormLayout responsiveSteps={responsiveSteps}>
+                            <FormLayout>
                                 <TextField label="Address One" id="addressOne"/>
                                 <TextField label="Address Two" id="addressTwo"/>
                                 <TextField label="City" id="city"/>
