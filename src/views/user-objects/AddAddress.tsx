@@ -3,6 +3,9 @@ import { FormLayout } from '@hilla/react-components/FormLayout';
 import { TextField } from '@hilla/react-components/TextField';
 import {Notification} from "@hilla/react-components/Notification";
 
+/**
+ * A function that creates a notification to the user that the address was successfully added.
+ */
 function addingNotification() {
     const notification = Notification.show('Added address. Refreshing content ...', {
         position: 'top-center',
@@ -14,6 +17,9 @@ function addingNotification() {
 
 export default function AddAddress() {
 
+    /**
+     * Collects form field data, converts it to JSON, sends the form data to the backend API, shows a success notification, and reloads the page.
+     */
     async function getAndSendFormData() {
         const formData = new FormData();
         formData.append('addressOne',(document.getElementById('addressOne') as HTMLInputElement).value);
@@ -44,6 +50,7 @@ export default function AddAddress() {
         }, 4000);
     }
 
+    // Returns a modal with form fields for adding a user
     return (
         <div className="d-flex align-items-center justify-content-center p-4">
             <div className="modal fade" id="address-modal">

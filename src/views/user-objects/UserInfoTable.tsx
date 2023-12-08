@@ -8,6 +8,9 @@ import {Button} from "primereact/button";
 
 export default function UserInfo() {
 
+    /**
+     * A function that creates a notification to the user that the user info was successfully updated.
+     */
     function updatingNotification() {
         const notification = Notification.show('Updating user info. Refreshing content ...', {
             position: 'top-center',
@@ -16,6 +19,10 @@ export default function UserInfo() {
         }) ;
         return <></>;
     }
+
+    /**
+     * An interface used to map an object, just like DBO in Java, to collect data from an API and put it into a usable object.
+     */
     interface UsersInfo {
         userInfoID: number,
         emailAddress: string,
@@ -25,9 +32,12 @@ export default function UserInfo() {
         phoneNumber: string
     }
 
+    // Creates constant variables and setter methods (plus initial values) as an array of the UsersInfo object
     const [usersInfo, setUsersInfo] = useState<UsersInfo[]>([]);
     const [selectedItems, setSelectedItems] = useState<UsersInfo[]>([]);
     const [detailsOpenedItem, setDetailsOpenedItem] = useState<UsersInfo[]>([]);
+
+    // Fetches user info data from the API when page loads and puts it into the usersInfo array
     useEffect(() => {
         async function fetchUsersInfo() {
             try {
@@ -48,6 +58,10 @@ export default function UserInfo() {
         fetchUsersInfo();
     }, []);
 
+
+    /**
+     * Collects form field data, converts it to JSON, sends the form data to the backend API, shows a success notification, and reloads the page.
+     */
     async function getAndSendFormData(userInfoID:number) {
         const formData = new FormData();
         formData.append('userInfoID',(userInfoID.toString()));
@@ -82,6 +96,7 @@ export default function UserInfo() {
         }, 2000);
     }
 
+    // Returns a table with a sub-table accessible by clicking on a row to edit values, resize columns, and sort by a column
     return (
         <div className="container-lg p-4 pt-0 pb-3">
             <h3 className="text-center pt-3 pb-3">Users Info Table</h3>

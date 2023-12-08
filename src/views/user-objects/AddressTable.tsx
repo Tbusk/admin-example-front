@@ -7,6 +7,9 @@ import {TextField} from "@hilla/react-components/TextField";
 
 export default function AddressTable() {
 
+    /**
+     * A function that creates a notification to the user that the address was successfully updated.
+     */
     function updatingNotification() {
         const notification = Notification.show('Updating address. Refreshing content ...', {
             position: 'top-center',
@@ -16,6 +19,9 @@ export default function AddressTable() {
         return <></>;
     }
 
+    /**
+     * A function that creates a notification to the user that the address was successfully deleted.
+     */
     function deletingNotification() {
         const notification = Notification.show('Deleting address. Refreshing content ...', {
             position: 'top-center',
@@ -25,6 +31,9 @@ export default function AddressTable() {
         return <></>;
     }
 
+    /**
+     * An interface used to map an object, just like DBO in Java, to collect data from an API and put it into a usable object.
+     */
     interface Addresses {
         addressID: number,
         addressOne: string,
@@ -35,9 +44,12 @@ export default function AddressTable() {
         zip: number
     }
 
+    // Creates constant variables and setter methods (plus initial values) as an array of the Addresses object
     const [address, setAddresses] = useState<Addresses[]>([]);
     const [selectedItems, setSelectedItems] = useState<Addresses[]>([]);
     const [detailsOpenedItem, setDetailsOpenedItem] = useState<Addresses[]>([]);
+
+    // Fetches address data from the API when page loads and puts it into the Address array
     useEffect(() => {
         async function fetchAdresses() {
             try {
@@ -58,6 +70,10 @@ export default function AddressTable() {
         fetchAdresses();
     }, []);
 
+
+    /**
+     * Collects form field data, converts it to JSON, sends the form data to the backend API, shows a success notification, and reloads the page.
+     */
     async function getAndSendFormData(addressID:number) {
         const formData = new FormData();
         formData.append('addressID',(addressID.toString()));
@@ -93,6 +109,9 @@ export default function AddressTable() {
         }, 2000);
     }
 
+    /**
+     * Collects form field data, converts it to JSON, sends the form data to the backend API, shows a success notification, and reloads the page.
+     */
     async function deleteAddress(addressID:number) {
         const formData = new FormData();
         formData.append('addressID',(addressID.toString()));
@@ -119,7 +138,7 @@ export default function AddressTable() {
         }, 2000);
     }
 
-
+    // Returns a table with a sub-table accessible by clicking on a row to edit values, resize columns, and sort by a column
     return (
         <div className="container-lg p-4 pt-0 pb-3">
             <h3 className="text-center pt-3 pb-3">Address Table</h3>

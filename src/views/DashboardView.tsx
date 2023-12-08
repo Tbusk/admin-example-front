@@ -4,6 +4,7 @@ import DashboardTotal from "./dashboard-objects/DashboardTotal";
 
 export default function Dashboard() {
 
+    // Returns a dashboard with various account stats like total admins, total users, new users past month, etc.
     return (
         <div className="container-lg">
             <div className="m-5">

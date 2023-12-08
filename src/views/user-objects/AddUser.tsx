@@ -4,6 +4,9 @@ import { TextField } from '@hilla/react-components/TextField';
 import { PasswordField } from '@hilla/react-components/PasswordField';
 import {Notification} from "@hilla/react-components/Notification";
 
+/**
+ * A function that creates a notification to the user that the user was successfully added.
+ */
 function addingNotification() {
     const notification = Notification.show('Added user. Refreshing content ...', {
         position: 'top-center',
@@ -15,6 +18,9 @@ function addingNotification() {
 
 export default function AddUser() {
 
+    /**
+     * Collects form field data, converts it to JSON, sends the form data to the backend API, shows a success notification, and reloads the page.
+     */
     async function getAndSendFormData() {
         const formData = new FormData();
         formData.append('userInfoID',(document.getElementById('userInfoID') as HTMLInputElement).value);
@@ -45,6 +51,7 @@ export default function AddUser() {
         }, 4000);
     }
 
+    // Returns a modal with form fields for adding a user
     return (
         <div className="d-flex align-items-center justify-content-center p-4">
             <div className="modal fade" id="user-modal">

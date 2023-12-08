@@ -1,6 +1,9 @@
 import React from 'react';
 import { Notification } from '@hilla/react-components/Notification.js';
 
+/**
+ * A function that creates a notification to the user that the user was successfully logged in.
+ */
 function loginNotification() {
     const notification = Notification.show('Successfully Logged In.  Your authentication token will expire in 8hrs. Redirecting ...', {
         position: 'top-center',
@@ -12,6 +15,10 @@ function loginNotification() {
 
 export default function Login() {
 
+    /**
+     * A function that collects the username and password from the login fields, sends it to the backend login API,
+     * gets back a token if successful, and makes the token usable for the API in the app
+     */
     const fetchJwtToken = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -35,6 +42,7 @@ export default function Login() {
         }, 4000);
     };
 
+    // Returns a bootstrap card with
     return (
         <div className="d-flex justify-content-center mt-5">
             <div className="card" style={{width:'28rem'}}>

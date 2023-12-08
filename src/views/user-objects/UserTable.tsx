@@ -6,10 +6,11 @@ import {FormLayout} from "@hilla/react-components/FormLayout";
 import {TextField} from "@hilla/react-components/TextField";
 import {Notification} from "@hilla/react-components/Notification";
 
-
-
 export default function UserTable() {
 
+    /**
+     * A function that creates a notification to the user that the yser was successfully updated.
+     */
     function updatingNotification() {
         const notification = Notification.show('Updating user. Refreshing content ...', {
             position: 'top-center',
@@ -19,6 +20,9 @@ export default function UserTable() {
         return <></>;
     }
 
+    /**
+     * An interface used to map an object, just like DBO in Java, to collect data from an API and put it into a usable object.
+     */
     interface Users {
         userID: number,
         userInfoID: number,
@@ -29,10 +33,12 @@ export default function UserTable() {
         createdAt: Date
     }
 
+    // Creates constant variables and setter methods (plus initial values) as an array of the Users object
     const [users, setUsers] = useState<Users[]>([]);
     const [selectedItems, setSelectedItems] = useState<Users[]>([]);
     const [detailsOpenedItem, setDetailsOpenedItem] = useState<Users[]>([]);
 
+    // Fetches user data from the API when page loads and puts it into the users array
     useEffect(() => {
         async function fetchUsers() {
             try {
@@ -53,6 +59,10 @@ export default function UserTable() {
         fetchUsers();
     }, []);
 
+
+    /**
+     * Collects form field data, converts it to JSON, sends the form data to the backend API, shows a success notification, and reloads the page.
+     */
     async function getAndSendFormData(userID:number) {
         const formData = new FormData();
         formData.append('userID',(document.getElementById('userID') as HTMLInputElement).value);
@@ -85,6 +95,7 @@ export default function UserTable() {
         }, 2000);
     }
 
+    // Returns a table with a sub-table accessible by clicking on a row to edit values, resize columns, and sort by a column
     return (
         <div className="container-lg p-4 pb-3 pt-0">
             <h3 className="text-center pt-3 pb-3">Users Table</h3>

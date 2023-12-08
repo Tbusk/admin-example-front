@@ -9,6 +9,9 @@ import {Tab} from "@hilla/react-components/Tab";
 import AddUserInfo from "./user-objects/AddUserInfo";
 import AddAddress from "./user-objects/AddAddress";
 
+/**
+ * Users tab of admin page
+ */
 export default function UsersView() {
 
     return (
