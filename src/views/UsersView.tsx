@@ -34,7 +34,6 @@ export default function UsersView() {
                 <AddressTable/>
                 <AddAddress/>
             </div>
-
         </TabSheet>
 
     );

@@ -15,8 +15,12 @@ export default async function GetAPI(props: GetAPIProps) {
                 'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
             }
         });
-
-        return parseInt(await response.text());
+        if( response.status === 200) {
+            return parseInt(await response.text());
+        } else {
+            console.log("Issue with getting API data.")
+            return 0;
+        }
     } catch (error) {
         console.error(error);
         return 0;

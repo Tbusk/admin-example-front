@@ -3,18 +3,6 @@ import { FormLayout } from '@hilla/react-components/FormLayout';
 import { TextField } from '@hilla/react-components/TextField';
 import {Notification} from "@hilla/react-components/Notification";
 
-/**
- * A function that creates a notification to the user that the user info was successfully added.
- */
-function addingNotification() {
-    const notification = Notification.show('Added user info. Refreshing content ...', {
-        position: 'top-center',
-        duration: 4000,
-        theme: 'contrast',
-    }) ;
-    return <></>;
-}
-
 export default function AddUserInfo() {
 
     /**
@@ -44,7 +32,11 @@ export default function AddUserInfo() {
             }
         }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
 
-        addingNotification();
+        Notification.show('Added user info. Refreshing content ...', {
+            position: 'top-center',
+            duration: 4000,
+            theme: 'contrast',
+        }) ;
         setTimeout(() => {
             window.location.reload();
         }, 4000);

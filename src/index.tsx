@@ -13,11 +13,9 @@ const root = ReactDOM.createRoot(
 export const router = new Router(document.querySelector('#outlet'));
 
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

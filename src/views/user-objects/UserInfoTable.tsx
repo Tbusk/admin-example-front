@@ -48,8 +48,10 @@ export default function UserInfo() {
                         'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
                     }
                 });
-                const data = await response.json();
-                setUsersInfo(data);
+                if(response.status === 200) {
+                    const data = await response.json();
+                    setUsersInfo(data);
+                }
             } catch (error) {
                 console.error(error);
             }

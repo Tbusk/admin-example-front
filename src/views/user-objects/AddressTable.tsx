@@ -8,30 +8,6 @@ import {TextField} from "@hilla/react-components/TextField";
 export default function AddressTable() {
 
     /**
-     * A function that creates a notification to the user that the address was successfully updated.
-     */
-    function updatingNotification() {
-        const notification = Notification.show('Updating address. Refreshing content ...', {
-            position: 'top-center',
-            duration: 2000,
-            theme: 'contrast',
-        }) ;
-        return <></>;
-    }
-
-    /**
-     * A function that creates a notification to the user that the address was successfully deleted.
-     */
-    function deletingNotification() {
-        const notification = Notification.show('Deleting address. Refreshing content ...', {
-            position: 'top-center',
-            duration: 2000,
-            theme: 'contrast',
-        }) ;
-        return <></>;
-    }
-
-    /**
      * An interface used to map an object, just like DBO in Java, to collect data from an API and put it into a usable object.
      */
     interface Addresses {
@@ -60,13 +36,14 @@ export default function AddressTable() {
                         'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
                     }
                 });
-                const data = await response.json();
-                setAddresses(data);
+                if(response.status === 200) {
+                    const data = await response.json();
+                    setAddresses(data);
+                }
             } catch (error) {
                 console.error(error);
             }
         }
-
         fetchAdresses();
     }, []);
 
@@ -103,7 +80,11 @@ export default function AddressTable() {
             }
         }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
 
-        updatingNotification();
+        Notification.show('Updating address. Refreshing content ...', {
+            position: 'top-center',
+            duration: 2000,
+            theme: 'contrast',
+        }) ;
         setTimeout(() => {
             window.location.reload();
         }, 2000);
@@ -130,9 +111,17 @@ export default function AddressTable() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
             }
-        }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
+        }).then(response => response.json())
+            .then(data => console.log(data)
+            )
+            .catch(error => console.error(error));
 
-        deletingNotification();
+        Notification.show('Deleting address. Refreshing content ...', {
+            position: 'top-center',
+            duration: 2000,
+            theme: 'contrast',
+        }) ;
+
         setTimeout(() => {
             window.location.reload();
         }, 2000);

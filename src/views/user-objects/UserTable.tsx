@@ -9,18 +9,6 @@ import {Notification} from "@hilla/react-components/Notification";
 export default function UserTable() {
 
     /**
-     * A function that creates a notification to the user that the yser was successfully updated.
-     */
-    function updatingNotification() {
-        const notification = Notification.show('Updating user. Refreshing content ...', {
-            position: 'top-center',
-            duration: 2000,
-            theme: 'contrast',
-        }) ;
-        return <></>;
-    }
-
-    /**
      * An interface used to map an object, just like DBO in Java, to collect data from an API and put it into a usable object.
      */
     interface Users {
@@ -41,7 +29,6 @@ export default function UserTable() {
     // Fetches user data from the API when page loads and puts it into the users array
     useEffect(() => {
         async function fetchUsers() {
-            try {
                 const response = await fetch('http://localhost:8080/api/user/list', {
                     method: 'GET',
                     headers: {
@@ -49,11 +36,17 @@ export default function UserTable() {
                         'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
                     }
                 });
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                console.error(error);
-            }
+                if(response.status === 200) {
+                    const data = await response.json();
+                    setUsers(data);
+                } else if (response.status === 403){
+                    Notification.show('Login to view table data', {
+                        position: 'top-center',
+                        duration: 3000,
+                        theme: 'contrast',
+                    }) ;
+                }
+
         }
 
         fetchUsers();
@@ -78,7 +71,6 @@ export default function UserTable() {
         }
 
         const jsonString = JSON.stringify(jsonObject);
-        console.log(jsonString);
 
         await fetch('http://localhost:8080/api/user', {
             method: 'PUT',
@@ -89,7 +81,12 @@ export default function UserTable() {
             }
         }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
 
-        updatingNotification();
+        Notification.show('Updating user. Refreshing content ...', {
+            position: 'top-center',
+            duration: 2000,
+            theme: 'contrast',
+        }) ;
+
         setTimeout(() => {
             window.location.reload();
         }, 2000);

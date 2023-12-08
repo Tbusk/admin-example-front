@@ -1,18 +1,6 @@
 import React from 'react';
 import { Notification } from '@hilla/react-components/Notification.js';
 
-/**
- * A function that creates a notification to the user that the user was successfully logged in.
- */
-function loginNotification() {
-    const notification = Notification.show('Successfully Logged In.  Your authentication token will expire in 8hrs. Redirecting ...', {
-        position: 'top-center',
-        duration: 4000,
-        theme: 'contrast',
-    }) ;
-    return <></>;
-}
-
 export default function Login() {
 
     /**
@@ -35,11 +23,25 @@ export default function Login() {
             body: JSON.stringify(data),
         });
         const { accessToken } = await response.json();
-        localStorage.setItem('jwtToken', accessToken);
-        loginNotification();
-        setTimeout(() => {
-            window.location.href = "./users";
-        }, 4000);
+
+        if(accessToken === undefined) {
+            Notification.show('There was a problem with your login. Try again or contact support.', {
+                position: 'top-center',
+                duration: 4000,
+                theme: 'contrast',
+            }) ;
+            
+        } else {
+            localStorage.setItem('jwtToken', accessToken);
+            Notification.show('Successfully Logged In.  Your authentication token will expire in 8hrs. Redirecting ...', {
+                position: 'top-center',
+                duration: 4000,
+                theme: 'contrast',
+            }) ;
+            setTimeout(() => {
+                window.location.href = "./users";
+            }, 4000);
+        }
     };
 
     // Returns a bootstrap card with
